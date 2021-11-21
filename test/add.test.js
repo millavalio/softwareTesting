@@ -1,14 +1,44 @@
-// First test - borrowed from EX1
-import chai from "chai"
+import chai, { AssertionError } from "chai"
 import add from "../COMP.SE.200-2021-2022-1/src/add.js"
-// below for node 10
-//var chai = require("chai")
-//var add = require ("../COMP.SE.200-2021-2022-1/src/add.js")
 const expect = chai.expect
 
 
 describe("add", () => {
  it("adds positive number to positive number", () =>{
-     expect(add(3, 6)).to.equal(9)
+    expect(add(2, 5)).to.equal(7)
  });
+ it("adds negative number to negative number", () =>{
+    expect(add(-2, -5)).to.equal(-7)
+ });
+ it("adds positive number to negative number", () =>{
+    expect(add(2, -5)).to.equal(-3)
+ });
+ it("adds negative number to positive number", () =>{
+    expect(add(-2, 5)).to.equal(3)
+ });
+ it("adds positive number to zero", () =>{
+    expect(add(2, 0)).to.equal(2)
+ });
+ it("adds negative number to zero", () =>{
+    expect(add(-2, 0)).to.equal(-2)
+ });
+ it("adds zero to zero", () =>{
+    expect(add(0, 0)).to.equal(0)
+ });
+ it("adds integer to non-integer", () =>{
+    expect(add(2, 5.5)).to.equal(7.5)
+ });
+ it("adds non-integer to integer", () =>{
+    expect(add(2.5, 5)).to.equal(7.5)
+ });
+ it("adds non-integer to non-integer", () =>{
+    expect(add(2.5, 5.5)).to.equal(8)
+ });
+ it("adds infinite number to infinite number", () =>{
+    expect(add(Infinity, Infinity)).to.equal(Infinity)
+ });
+ it("throws an error when using NaN", () =>{
+    expect(() => add('a', 1)).to.throw(AssertionError)
+ });
+
 })
