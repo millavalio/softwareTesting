@@ -5,7 +5,7 @@ const expect = chai.expect
 // Function to check if an array is dense
 function isDense(arr) {
   for (let i = 0; i < arr.length; i++) {
-    if (!(i in array)) {
+    if (!(i in arr)) {
       return false;
     }
   }
@@ -82,5 +82,27 @@ describe("slice", () => {
      expect(slice(arr, 3, -1)).to.deep.equal(["green", "blue", "indigo"]);
  });
 
- // TODO: test dense arrays
+ // These following tests test that the function gives dense arrays even when provided sparse arrays.
+ // What the dense arrays should be like was however not defined, so it is not tested.
+ it("returns dense array when asked to give slice from empty region of sparse array", () => {
+     const sparsearr = ["first"];
+     sparsearr[5] = "sixth";
+     expect(isDense( sparsearr )).to.be.false;  // Checking that isDense recognizes sparse array
+     expect(isDense( slice(sparsearr, 2, 4) )).to.be.true;
+ });
+ it("returns dense array when asked to give slice from region of sparse array containing both real and missing elements", () => {
+     const sparsearr = ["first", "second"];
+     sparsearr[3] = "fourth";
+     sparsearr[8] = "ninth";
+     sparsearr[9] = "tenth";
+     expect(isDense( sparsearr )).to.be.false;  // Checking that isDense recognizes sparse array
+     expect(isDense( slice(sparsearr, 2, 9) )).to.be.true;
+ });
+ it("returns dense array when asked to give slice from fully populated region of sparse array", () => {
+     const sparsearr = ["first", "second", "third", "fourth"];
+     sparsearr[9] = "tenth";
+     expect(isDense( sparsearr )).to.be.false;  // Checking that isDense recognizes sparse array
+     expect(isDense( slice(sparsearr, 0, 4) )).to.be.true;
+ });
+
 })
