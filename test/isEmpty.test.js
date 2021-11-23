@@ -4,6 +4,7 @@ const expect = chai.expect
 
 describe("isEmpty", () => {
 
+ // Empty inputs
  it("returns true for null", () =>{
      expect(isEmpty(null)).to.equal(true);
  });
@@ -32,6 +33,7 @@ describe("isEmpty", () => {
      expect(isEmpty(0)).to.equal(true);
  });
 
+ // Non-empty inputs
  it("returns false for non-empty string", () =>{
      expect(isEmpty("this is a non-empty string")).to.equal(false);
  });

@@ -9,6 +9,7 @@ const expect = chai.expect
 
 describe("defaultTo", () => {
 
+ // Truthy values with null/NaN/undefined default value
  it("truthy value (positive number) and null default value gives value", () =>{
      expect(defaultTo(4, null)).to.equal(4);
  });
@@ -21,7 +22,7 @@ describe("defaultTo", () => {
      expect(defaultTo(emptyobj, undefined)).to.equal(emptyobj);
  });
 
-
+ // Null/NaN/undefined values with truthy default value
  it("null value and truthy default value (string) gives default value", () =>{
      expect(defaultTo(null, "default value")).to.equal("default value");
  });
@@ -32,7 +33,7 @@ describe("defaultTo", () => {
      expect(defaultTo(undefined, "default value")).to.equal("default value");
  });
 
-
+ // Null value with Null/NaN/undefined default value
  it("null value and null default value gives default value", () =>{
      expect(defaultTo(null, null)).to.equal(null);
  });
@@ -43,7 +44,7 @@ describe("defaultTo", () => {
      expect(defaultTo(null, NaN)).to.be.NaN;
  });
 
-
+ // Undefined with Null/NaN/undefined default value
  it("undefined value and null default value gives default value", () =>{
      expect(defaultTo(undefined, null)).to.equal(null);
  });
@@ -54,7 +55,7 @@ describe("defaultTo", () => {
      expect(defaultTo(undefined, NaN)).to.be.NaN;
  });
 
-
+ // NaN value with Null/NaN/undefined default value
  it("NaN value and null default value gives default value", () =>{
      expect(defaultTo(NaN, null)).to.equal(null);
  });
@@ -65,7 +66,7 @@ describe("defaultTo", () => {
      expect(defaultTo(NaN, NaN)).to.be.NaN;
  });
 
-
+ // Falsy but non-NaN/null/undefined values with truthy default values
  it("falsy but non-NaN/null/undefined value (zero) with truthy default value (negative number) returns value", () =>{
      expect(defaultTo(0, -15)).to.equal(0);
  });
