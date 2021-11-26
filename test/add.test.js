@@ -37,8 +37,7 @@ describe("add", () => {
  it("adds infinite number to infinite number", () =>{
     expect(add(Infinity, Infinity)).to.equal(Infinity)
  });
- it("throws an error when using NaN", () =>{
-    expect(() => add('a', 1)).to.throw(AssertionError)
+ it("adds long int to int", () =>{
+   expect(() => add(1738141852226360, 1)).to.equal(1738141852226361)
  });
-
 })
