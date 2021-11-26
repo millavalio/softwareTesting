@@ -69,6 +69,17 @@ describe("toString", () => {
      expect(toString([1, [2, [3, 4], 5], 6])).to.equal("1,2,3,4,5,6");
  });
 
- // TODO rest
+ // Objects
+ it("acts identical to .toString for an empty object", () =>{
+     expect(toString({})).to.equal({}.toString());
+ });
+ it("acts identical to .toString for a simple non-empty object", () =>{
+     const obj = {"a": 8, "b": -9};
+     expect(toString(obj)).to.equal(obj.toString());
+ });
+ it("acts identical to .toString for a object with nested objects", () =>{
+     const obj = {"a": {"a1": 7, "a2": 0}, "b": {"b1": "none", "b2": -32}, "c": "none"};
+     expect(toString(obj)).to.equal(obj.toString());
+ });
 
 })
