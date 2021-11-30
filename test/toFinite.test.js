@@ -47,11 +47,11 @@ describe("toFinite", () => {
  it("returns NaN for string that represents a number but has extra whitespace", () =>{
      expect(toFinite("   -45 ")).to.equal(-45);
  });
- it("returns NaN for string that has numbers but also letters (and is not valid encoding for another base)", () =>{
-     expect(toFinite("m4526np")).to.be.NaN;
+ it("returns zero for string that has numbers but also letters (and is not valid encoding for another base)", () =>{
+     expect(toFinite("m4526np")).to.equal(0);
  });
- it("returns NaN for string with letters and no numbers", () =>{
-     expect(toFinite("string")).to.be.NaN;
+ it("returns zero for string with letters and no numbers", () =>{
+     expect(toFinite("string")).to.equal(0);
  });
  // Parsing strings of a base other than 10 is tested rather superficially as it is not
  // expected to be used a lot and testing exhaustively takes considerable effort
@@ -67,21 +67,21 @@ describe("toFinite", () => {
      expect(toFinite([-160])).to.equal(-160);
  });
 
- // Return NaN for other types
- it("returns NaN for NaN", () =>{
-     expect(toFinite(NaN)).to.be.NaN;
+ // Return zero for other types
+ it("returns zero for NaN", () =>{
+     expect(toFinite(NaN)).to.equal(0);
  });
- it("returns NaN for empty string", () =>{
-     expect(toFinite("")).to.be.NaN;
+ it("returns zero for empty string", () =>{
+     expect(toFinite("")).to.equal(0);
  });
- it("returns NaN for empty array", () =>{
-     expect(toFinite([])).to.be.NaN;
+ it("returns zero for empty array", () =>{
+     expect(toFinite([])).to.equal(-0);
  });
- it("returns NaN for array with more than one number", () =>{
-     expect(toFinite([14, 7])).to.be.NaN;
+ it("returns zero for array with more than one number", () =>{
+     expect(toFinite([14, 7])).to.equal(0);
  });
- it("returns NaN for object", () =>{
-     expect(toFinite({"value": 3})).to.be.NaN;
+ it("returns zero for object", () =>{
+     expect(toFinite({"value": 3})).to.equal(0);
  });
 
 })

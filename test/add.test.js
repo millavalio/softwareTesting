@@ -38,6 +38,6 @@ describe("add", () => {
     expect(add(Infinity, Infinity)).to.equal(Infinity)
  });
  it("adds long int to int", () =>{
-   expect(() => add(1738141852226360, 1)).to.equal(1738141852226361)
+   expect(add(1738141852226360, 1)).to.equal(1738141852226361)
  });
 })
