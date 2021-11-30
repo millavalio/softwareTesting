@@ -19,6 +19,7 @@
   },
   "scripts": {
     "test": "mocha",
+    "test:awesome": "mocha --reporter mochawesome || true",
     "coverage": "jest --coverage"
   },
   "jest": {
