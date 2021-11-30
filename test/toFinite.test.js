@@ -31,13 +31,12 @@ describe("toFinite", () => {
      expect(toFinite(-INFINITY)).to.equal(-MAX_INTEGER);
  });
 
- // What booleans should be turned into was not specified,
- // but it was specified that the return value should be a number.
- it("returns a number for false", () =>{
-     expect(toFinite(false)).to.be.a("number");
+ // Booleans
+ it("returns zero for false", () =>{
+     expect(toFinite(false)).to.equal(0);
  });
- it("returns a number for true", () =>{
-     expect(toFinite(true)).to.be.a("number");
+ it("returns one for true", () =>{
+     expect(toFinite(true)).to.equal(1);
  });
 
  // Parsing strings
