@@ -6,3 +6,5 @@ before_install:
 script:
   - jest --ci --coverage && codecov
   - codecov
+  notifications:
+  - email: false
