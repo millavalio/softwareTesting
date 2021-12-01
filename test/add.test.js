@@ -37,7 +37,10 @@ describe("add", () => {
  it("adds infinite number to infinite number", () =>{
     expect(add(Infinity, Infinity)).to.equal(Infinity)
  });
+ it("adds negative infinite number to infinite number", () =>{
+   expect(add(-Infinity, Infinity)).to.be.NaN
+});
  it("adds long int to int", () =>{
-   expect(add(1738141852226360, 1)).to.equal(1738141852226361)
+    expect(add(1738141852226360, 1)).to.equal(1738141852226361)
  });
 })
